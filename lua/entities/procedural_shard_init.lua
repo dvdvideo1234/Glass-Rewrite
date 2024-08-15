@@ -50,9 +50,10 @@ for k, v in ipairs(models) do
 
         if use_expensive:GetBool() then -- Expensive material
             block:SetMaterial(expensive_mat)
-        else -- Otherwise use simple default aterial
+        else -- Otherwise use simple default material
             block:SetMaterial(default_mat)
-        end
+        end -- Primary material is properly set
+        -- This will correctly propagate across ENT:Split()
 
         local phys = block:GetPhysicsObject()
         if phys and phys:IsValid() then phys:EnableMotion(false) end
